@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Animated, StyleSheet, View } from "react-native";
 import Icon from "./assets/icon.png"; // Ensure the path is correct
 
-export default function SplashScreen({ navigation }) { // Accept navigation prop
+export default function SplashScreen({ navigation }) {
     const translateYAnim = useRef(new Animated.Value(300)).current;
 
     useEffect(() => {
@@ -16,7 +16,8 @@ export default function SplashScreen({ navigation }) { // Accept navigation prop
 
         // Set a timer to navigate to the Login screen after the animation
         const timer = setTimeout(() => {
-            navigation.replace("LogIn"); // Replace so the user can't go back to the splash
+            console.log("Navigating to LogIn screen");
+            navigation.replace("Login");
         }, 2000); // Adjust time as needed
 
         return () => clearTimeout(timer); // Clean up the timer when component unmounts

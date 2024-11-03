@@ -1,3 +1,5 @@
+// LogInScreen.js
+
 import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Animated, Easing } from 'react-native';
 import Icon from './assets/icon.png'; // Ensure this path is correct
@@ -13,25 +15,26 @@ export default function LogInScreen({ navigation }) {
   const handleSignUpPress = () => {
     Animated.timing(animation, {
       toValue: 1,
-      duration: 800, // Duration of the animation
+      duration: 800,
       easing: Easing.ease,
       useNativeDriver: false,
     }).start(() => {
-      navigation.navigate('SignUp'); // Navigate to SignUp after the animation
-      animation.setValue(0); // Reset animation value for next use
+      navigation.navigate('SignUp');
+      animation.setValue(0);
     });
   };
 
   const handleLoginPress = () => {
     console.log('Login button pressed');
-    // Add login logic here
+    // Navigate to Onboarding
+    navigation.navigate('Onboarding');
   };
 
   // Style for the circle animation
   const circleStyle = {
     width: animation.interpolate({
       inputRange: [0, 1],
-      outputRange: [50, 1500], // Start small and expand to cover screen
+      outputRange: [50, 1500],
     }),
     height: animation.interpolate({
       inputRange: [0, 1],
@@ -39,11 +42,11 @@ export default function LogInScreen({ navigation }) {
     }),
     borderRadius: animation.interpolate({
       inputRange: [0, 1],
-      outputRange: [25, 750], // Make the circle
+      outputRange: [25, 750],
     }),
     opacity: animation.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 1], // Fade in as the circle expands
+      outputRange: [0, 1],
     }),
     position: 'absolute',
     backgroundColor: 'lightblue',
@@ -53,13 +56,13 @@ export default function LogInScreen({ navigation }) {
       {
         translateX: animation.interpolate({
           inputRange: [0, 1],
-          outputRange: [-25, -750], // Negative half of the final width
+          outputRange: [-25, -750],
         }),
       },
       {
         translateY: animation.interpolate({
           inputRange: [0, 1],
-          outputRange: [-25, -750], // Negative half of the final height
+          outputRange: [-25, -750],
         }),
       },
     ],
@@ -142,7 +145,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10
+    marginBottom: 10,
   },
   loginButtonText: {
     fontSize: 18,

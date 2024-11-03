@@ -1,20 +1,25 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LogInScreen from './LogInScreen'; // Ensure the correct path to LogInScreen
-import SignUpScreen from './SignUpScreen'; // Ensure the correct path to SignUpScreen
+import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './SplashScreenView';
+import LoginScreen from './LogInScreen';
+import SignupScreen from './SignUpScreen';
+import TabNavigator from './TabNavigator';
+import Onboarding from './components/Onboarding';
+const Stack = createStackNavigator();
 
-const Stack = createNativeStackNavigator();
-
-export default function App() {
+const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreenView">
-        <Stack.Screen name="SplashScreenView" component={SplashScreen} />
-        <Stack.Screen name="LogIn" component={LogInScreen} />
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Splash" component={SplashScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Signup" component={SignupScreen} />
+        <Stack.Screen name="Onboarding" component={Onboarding} />
+        <Stack.Screen name="MainTabs" component={TabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
+
+export default App;
